@@ -47,12 +47,12 @@ for i=1:n
 	crv[i] = nrbmak(coefs,knots)
 end
 end
+ 
 
-
-z=0;
+z=0
 for k=1:n
     for i=1:crv[k].number
-	    z=z+1
+	    global z=z+1
     end
 end
 numcurva=zeros(Integer,z)
@@ -66,7 +66,7 @@ for k=1:n
     nnos[k]=crv[k].number;
 
     for i=1:crv[k].number
-        z=z+1;
+        global z=z+1;
         # numcurva[z]=k;
         # collocPts[z]=sum(crv[k].knots[(i+1):(i+p)])/p;
         # if(i==2)
@@ -79,7 +79,7 @@ for k=1:n
        CDC[z,:] = [z; CCSeg[k,2:5]];
     end
 end
-nnos2=cumsum([0 nnos'],2);
+nnos2=cumsum([0 nnos'],dims=2);
 
 # E=zeros(length(collocPts),length(collocPts));
 # for i=1:length(collocPts)
@@ -104,6 +104,7 @@ t=E*tc
 cont=1
 for c in crv
 for f in c.fontes
+    global cont
 collocCoord[cont,:]=f.coords[1:2]
 collocPts[cont]=f.pts
 cont+=1

@@ -30,7 +30,7 @@ function CalcHeG(nnos, crv, kmat,npgauss = 12)
                     else
                         g, h = integra_elem(xfonte, crv[i], qsi, w, shapes, derivs, crv[i].C[:,:,j], crv[i].conn[j], kmat); # Integra��o sobre o
                     end
-                    colunas=[2*(crv[i].conn[j] .+ nnos[i])-1 2*(crv[i].conn[j] .+ nnos[i])]'[:]
+                    colunas=[2*(crv[i].conn[j] .+ nnos[i]).-1 2*(crv[i].conn[j] .+ nnos[i])]'[:]
                     H[2*k-1:2*k,colunas] += h;
                     G[2*k-1:2*k,colunas] += g;
                     k += 1   

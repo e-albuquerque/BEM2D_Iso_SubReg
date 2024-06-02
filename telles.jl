@@ -25,7 +25,7 @@ B = -3*GAMM/Q;
 C = 3*GAMM^2/Q;
 D = -B;
 
-eta = A*gamm.^3 + B*gamm.^2 + C*gamm + D;
-Jt = 3*A*gamm.^2 + 2*B*gamm + C;
+eta = A*gamm.^3 + B*gamm.^2 .+ C*gamm .+ D;
+Jt = 3*A*gamm.^2 .+ 2*B*gamm .+ C;
 return  eta,Jt
 end
